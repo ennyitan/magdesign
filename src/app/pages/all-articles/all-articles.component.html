@@ -1,0 +1,294 @@
+<div class="md:py-12 p-5 md:px-12">
+  <!-- section for every list of artcles -->
+  <div>
+    <h2 class="font-bold md:text-4xl text-lg text-center mb-4 md:mb-6 lg:mb-10">
+      Trending
+    </h2>
+    <!-- trending news auto slide carousel -->
+    <owl-carousel-o [options]="customOptions">
+      <ng-container *ngFor="let slide of combinedArticles">
+        <ng-template carouselSlide>
+          <div
+            class="flex flex-col lg:flex-row lg:justify-between items-center lg:gap-12 mb-3"
+          >
+            <div class="lg:w-1/2 md:w-full">
+              <img
+                [src]="slide?.urlToImage"
+                class="object-cover w-full md:h-[22rem] rounded-xl ease-in-out"
+                alt=""
+              />
+            </div>
+
+            <div class="lg:w-1/2 md:w-full my-3 lg:my-0">
+              <span class="font-bold text-sm"
+                >{{
+                  slide.source.name === "TechCrunch" ? "Technology" : "Business"
+                }}
+                -
+                <span class="text-gray-500 text-sm font-light">{{
+                  slide.publishedAt | date
+                }}</span></span
+              >
+
+              <div>
+                <h3
+                  class="md:text-xl lg:text-4xl text-base mb-2 font-bold mt-3"
+                >
+                  <a [href]="slide.url" target="_blank">{{ slide.title }}</a>
+                </h3>
+                <p class="text-sm text-grey">
+                  {{ slide.description }}
+                </p>
+              </div>
+              <div class="flex gap-3 items-center">
+                <img
+                  src="assets/images/avatar.png"
+                  alt="author"
+                  class="authorImage"
+                />
+                <div class="mt-3">
+                  <p class="font-bold text-sm">
+                    {{ slide.author }}
+                  </p>
+                  <p class="text-xs text-grey">CEO and Founder</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
+
+    <!--list of all available articles -->
+    <div>
+      <div
+        class="grid lg:grid-cols-3 md:grid-cols-2 md:gap-8 lg:gap-10 gap-4 mb-3 my-8 lg:my-14"
+      >
+        <div
+          class="mb-3"
+          *ngFor="let article of combinedArticles; let i = index"
+        >
+          <div class="bg-white rounded-xl flex flex-col justify-between">
+            <img
+              class="object-cover w-full h-56 mb-5 rounded-xl"
+              [src]="article?.urlToImage"
+              alt="Article Image"
+            />
+            <div>
+              <span class="font-bold text-sm"
+                >{{
+                  article.source.name === "TechCrunch"
+                    ? "Technology"
+                    : "Business"
+                }}
+                -
+                <span class="text-gray-500 text-sm font-light">{{
+                  article.publishedAt | date
+                }}</span></span
+              >
+              <div>
+                <h3 class="md:text-lg text-base mb-2 font-bold md:truncate">
+                  <a [href]="article.url" target="_blank">{{
+                    article.title
+                  }}</a>
+                </h3>
+                <p class="text-sm text-gray-700 md:truncate">
+                  {{ article.description }}
+                </p>
+              </div>
+              <div class="flex justify-between items-center mt-auto">
+                <div class="flex gap-3 items-center">
+                  <img
+                    src="assets/images/avatar.png"
+                    alt="author"
+                    class="w-8 h-8 rounded-full"
+                  />
+                  <div class="mt-3">
+                    <p class="font-bold text-sm">{{ article.author }}</p>
+                    <p class="text-xs text-gray-500">CEO and Founder</p>
+                  </div>
+                </div>
+
+                <div matTooltip="Bookmark">
+                  <img
+                    matTooltip="Bookmark"
+                    [src]="
+                      article.isBookmarkClicked
+                        ? 'assets/icons/active-star.svg'
+                        : 'assets/icons/star.svg'
+                    "
+                    (click)="addBookmark(i, article)"
+                    class="w-5 h-5 cursor-pointer"
+                    alt=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="grid lg:grid-cols-2 lg:min-h-100 md:gap-8 lg:gap-10 gap-4 mt-8 lg:mt-12"
+      >
+        <div>
+          <h3 class="font-bold text-xl mb-4">Technology</h3>
+          <div *ngFor="let tech of techArticles">
+            <div
+              class=" mb-4 md:mb-6 flex xl:gap-5 xl:flex-row flex-col items-start"
+            >
+
+              <img
+                class="object-cover lg:h-80 xl:h-32 lg:w-full xl:w-48 mb-5 rounded-xl"
+                [src]="tech?.urlToImage"
+                alt="Article Image"
+              />
+              <div class="lg:h-[250px]">
+                <span class="font-bold text-sm">
+                  <span class="text-grey text-sm font-light">{{
+                    tech.publishedAt | date
+                  }}</span></span
+                >
+                <div>
+                  <h3 class="md:text-lg text-base mb-2 font-bold">
+                    <a [href]="tech.url" target="_blank">{{ tech.title }}</a>
+                  </h3>
+                  <p class="text-sm text-grey">{{ tech.description }}</p>
+                </div>
+                <div class="flex gap-3 items-center">
+                  <img
+                    src="assets/images/avatar.png"
+                    alt="author"
+                    class="w-8 h-8 rounded-full"
+                  />
+                  <div class="mt-3">
+                    <p class="font-bold text-sm">{{ tech.author }}</p>
+                    <p class="text-xs text-grey">CEO and Founder</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3 class="font-bold text-xl mb-4">Buisness</h3>
+          <div *ngFor="let buisness of businessArticles">
+            <div
+              class=" mb-4 md:mb-6 flex xl:flex-row xl:gap-5 lg:mb-4 flex-col items-start"
+            >
+
+              <img
+                class="object-cover lg:h-80 xl:h-32 lg:w-full xl:w-48 mb-5 rounded-xl"
+                [src]="buisness?.urlToImage"
+                alt="Article Image"
+              />
+              <div class="lg:h-[250px]">
+                <span class="font-bold text-sm">
+                  <span class="text-grey text-sm font-light">{{
+                    buisness.publishedAt | date
+                  }}</span></span
+                >
+                <div>
+                  <h3 class="md:text-lg text-base mb-2 font-bold">
+                    <a [href]="buisness.url" target="_blank">{{
+                      buisness.title
+                    }}</a>
+                  </h3>
+                  <p class="text-sm text-grey">{{ buisness.description }}</p>
+                </div>
+                <div class="flex gap-3 items-center">
+                  <img
+                    src="assets/images/avatar.png"
+                    alt="author"
+                    class="w-8 h-8 rounded-full"
+                  />
+                  <div class="mt-3">
+                    <p class="font-bold text-sm">{{ buisness.author }}</p>
+                    <p class="text-xs text-grey">CEO and Founder</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- most popular articles slide -->
+    <h2 class="font-bold md:text-4xl text-lg text-center mb-4 md:mb-6 lg:mb-10">
+      Most Popular Post
+    </h2>
+    <!-- trending news auto slide carousel -->
+    <!-- <owl-carousel-o [options]="postOptions">
+      <ng-container *ngFor="let slide of combinedArticles">
+        <ng-template carouselSlide>
+          <div class="flex flex-col  mb-3">
+            <div class="lg:w-1/2 md:w-full">
+              <img [src]="slide?.urlToImage"
+                class="object-cover w-full md:h-[22rem] rounded-xl ease-in-out" alt="" />
+            </div>
+    
+            <div class="lg:w-1/2 md:w-full my-3 lg:my-0">
+              <span class="font-bold text-sm">{{
+                slide.source.name === "TechCrunch"
+                ? "Technology"
+                : "Business"
+                }}
+                -
+                <span class="text-gray-500 text-sm font-light">{{
+                  slide.publishedAt | date
+                  }}</span></span>
+    
+              <div>
+                <h3 class="md:text-xl lg:text-4xl text-base mb-2 font-bold mt-3">
+                  <a [href]="slide.url" target="_blank">{{
+                    slide.title
+                    }}</a>
+                </h3>
+                <p class="text-sm text-grey">
+                  {{ slide.description }}
+                </p>
+              </div>
+              <div class="flex gap-3 items-center">
+                <img src="assets/images/avatar.png" alt="author" class="authorImage" />
+                <div class="mt-3">
+                  <p class="font-bold text-sm">
+                    {{ slide.author }}
+                  </p>
+                  <p class="text-xs text-grey">CEO and Founder</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o> -->
+  </div>
+  <!-- section for newsletter subscribtion -->
+  <div class="my-8">
+    <div class="bg-primaryBg rounded-md py-8 px-5">
+      <h3 class="font-bold text-lg lg:text-2xl mb-2">
+        Subscribe to newsletter
+      </h3>
+      <div>
+        <form #myForm="ngForm" (ngSubmit)="submitForm()">
+          <div class="flex gap-4 flex-col md:flex-row items-center">
+            <input
+              type="text"
+              placeholder="Enter your email"
+              class="border border-grey outline-none p-3 rounded-md w-full md:w-[70%]"
+              id="name"
+              name="name"
+              [(ngModel)]="formData.name"
+            />
+            <button
+              class="rounded-[60px] bg-orange text-white py-2 px-4 w-full md:w-[30%]"
+            >
+              Subscribe
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
