@@ -13,11 +13,14 @@
       <div class="flex gap-5 items-center py-4 border-b">
         <img class="w-7 h-4" [src]="article.urlToImage" alt="url_image" />
         <p class="truncate break-words cursor-pointer">
-        <a [href]="article.url" target="_blank">{{
-          article.title
-          }}</a>
-      </p>
-        <img class="cursor-pointer w-5 h-5" (click)="deleteArticle(i)" src="assets/icons/delete.svg" alt="delete">
+          <a [href]="article.url" target="_blank">{{ article.title }}</a>
+        </p>
+        <img
+          class="cursor-pointer w-5 h-5"
+          (click)="deleteArticle(i)"
+          src="assets/icons/delete.svg"
+          alt="delete"
+        />
       </div>
     </div>
   </ng-container>

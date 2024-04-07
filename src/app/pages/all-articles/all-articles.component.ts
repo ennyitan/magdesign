@@ -10,7 +10,7 @@ import { ArticleService } from 'src/app/core/services/article.service';
 })
 export class AllArticlesComponent {
   formData: any = {};
-  @Output() isBookmarkClicked = new EventEmitter<boolean>()
+  isBookmarkClicked = false as boolean
   bookmarkedArray: any[] = [];
   combinedArticles: Article[] = [];
   businessArticles: Article[] = [];
@@ -21,6 +21,7 @@ export class AllArticlesComponent {
   }
 
   fetchArticles() {
+    // combining both types of article so there can be a shufffle of different articles on the page
     this.articleService.getBuisnessArticle().subscribe((res) => {
       const validateResponse = res.articles.filter(
         (article: any) => article.urlToImage !== null
@@ -49,7 +50,6 @@ export class AllArticlesComponent {
     this.combinedArticles.sort(() => Math.random() - 0.5);
   }
   addBookmark(index: number, article: any) {
-    this.isBookmarkClicked.emit(true)
     article.isBookmarkClicked = !article.isBookmarkClicked;
     if (
       article &&
@@ -90,31 +90,6 @@ export class AllArticlesComponent {
       },
       1000: {
         items: 1,
-      },
-    },
-  };
-  postOptions: OwlOptions = {
-    items: 3,
-    loop: true,
-    margin: 10,
-    nav: false,
-    dots: true,
-    // autoplay: true,
-    autoplayTimeout: 5000,
-    autoplayHoverPause: true,
-    responsive: {
-      0: {
-        items: 3,
-        center: true,
-        autoWidth: true,
-      },
-      600: {
-        items: 3,
-        center: false,
-        autoWidth: false,
-      },
-      1000: {
-        items: 3,
       },
     },
   };
