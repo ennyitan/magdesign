@@ -51,11 +51,12 @@ body {
   width: 1000px !important;
   margin-right: 150px !important;
 }
-.custom-snackbar {
-  background-color: #2196f3 !important; 
-  color: white; 
+
+.mdc-snackbar__label {
+  background-color: #f79918 !important;
+  color: white !important;
 }
 
-.custom-snackbar-button {
-  color: white; 
+.mat-mdc-snack-bar-container .mat-mdc-button.mat-mdc-snack-bar-action:not(:disabled) {
+ color: white !important;
 }
