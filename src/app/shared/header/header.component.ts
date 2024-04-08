@@ -1,6 +1,6 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
-import { BookmarkListComponent } from '../bookmark-list/bookmark-list.component';
+import { BookmarkListComponent } from '../../pages/bookmark-list/bookmark-list.component';
 import { INewsMenu, NewsMenu } from 'src/app/core/constant/menu.model';
 
 @Component({

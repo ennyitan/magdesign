@@ -1,16 +1,13 @@
-import { Component, Inject, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, Inject } from '@angular/core';
 import {
   MAT_DIALOG_DATA,
-  MatDialog,
   MatDialogRef,
 } from '@angular/material/dialog';
-import { ArticleService } from 'src/app/core/services/article.service';
 
 @Component({
   selector: 'app-bookmark-list',
-  standalone: true,
-  imports: [CommonModule],
+  // standalone: true,
+  // imports: [CommonModule],
   templateUrl: './bookmark-list.component.html',
   styleUrls: ['./bookmark-list.component.scss'],
 })

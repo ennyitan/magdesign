@@ -13,11 +13,13 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { FormsModule } from '@angular/forms';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { ErrorInterceptor } from './core/interceptors/error-interceptor';
+import { BookmarkListComponent } from './pages/bookmark-list/bookmark-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AllArticlesComponent,
+    BookmarkListComponent,
     HeaderComponent,
     FooterComponent
   ],
