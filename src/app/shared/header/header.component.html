@@ -1,117 +1,104 @@
-<div
-  class="bg-white flex flex-col sm:flex-row md:gap-4 justify-between items-center p-5 md:px-16 border-b border-gray-200"
->
-  <div
-    class="order-3 sm:order-1 relative py-2 w-full md:w-fit mt-4 md:mt-0 flex items-center gap-3 rounded-3xl border border-gray-200 z-10"
-  >
-    <img
-      src="assets/icons/search.svg"
-      alt="Search"
-      class="absolute left-3 w-4 h-4"
-    />
-    <input
-      type="text"
-      placeholder="Search..."
-      class="pr-5 pl-12 rounded-[60px] placeholder:text-sm h-full border-none outline-none focus:border-none focus:outline-none"
-    />
-  </div>
-  <div class="order-1 sm:order-2 text-xl font-bold cursor-pointer">
-    MAGDESIGN
-  </div>
-  <div class="order-2 sm:order-3 flex gap-14">
-    <div class="flex gap-3 items-center">
-      <img
-        class="w-4 h-4 cursor-pointer"
-        src="assets/icons/twitter.svg"
-        alt="twitter"
-      />
-      <img
-        class="w-4 h-4 cursor-pointer"
-        src="assets/icons/facebook.svg"
-        alt="facebook"
-      />
-      <img
-        class="w-4 h-4 cursor-pointer"
-        src="assets/icons/instagram.svg"
-        alt="instagram"
-      />
-      <img
-        (click)="openBookmarkList()"
-        class="w-5 h-5 cursor-pointer"
-        src="assets/icons/active-star.svg"
-        alt=""
-      />
-    </div>
-    <div (click)="showMenu = !showMenu">
-      <svg
-      class="cursor-pointer w-6 h-6 md:w-9 md:h-9"
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-      
-        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-        <g
-          id="SVGRepo_tracerCarrier"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        ></g>
-        <g id="SVGRepo_iconCarrier">
-          <path
-            d="M4 6H20M4 12H20M4 18H20"
-            stroke="#000000"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          ></path>
-        </g>
-      </svg>
-   
-    </div>
+<section >
+  <div class="relative ">
+
     <div
-      (mouseleave)="showMenu = false"
-      [ngClass]="showMenu ? 'right-0' : 'right-full'"
-      class="absolute transition-all shadow-xl duration-700 w-[80%] max-w-xs z-50 bg-white p-8 top-[50px]"
+    class=" flex flex-col sm:flex-row md:gap-4 justify-between items-center p-5 md:px-16 border-b border-gray-200"
+  >
+    <div
+      class="order-3 sm:order-1 relative py-2 w-full md:w-fit mt-4 md:mt-0 flex items-center gap-3 rounded-3xl border border-gray-200 z-10"
     >
-      <div class="flex justify-end">
-        <span (click)="showMenu = false">
-          <svg
-            width="24px"
-            height="24px"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-            <g
-              id="SVGRepo_tracerCarrier"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            ></g>
-            <g id="SVGRepo_iconCarrier">
-              <g id="Menu / Close_SM">
-                <path
-                  id="Vector"
-                  d="M16 16L12 12M12 12L8 8M12 12L16 8M12 12L8 16"
-                  stroke="#000000"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></path>
-              </g>
-            </g>
-          </svg>
-        </span>
+      <img
+        src="assets/icons/search.svg"
+        alt="Search"
+        class="absolute left-3 w-4 h-4"
+      />
+      <input
+        type="text"
+        placeholder="Search..."
+        class="pr-5 pl-12 rounded-[60px] placeholder:text-sm h-full border-none outline-none focus:border-none focus:outline-none"
+      />
+    </div>
+    <div class="order-1 sm:order-2 text-xl font-bold cursor-pointer">
+      MAGDESIGN
+    </div>
+    <div class="order-2 sm:order-3 flex gap-14">
+      <div class="flex gap-3 items-center">
+        <img
+          class="w-4 h-4 cursor-pointer"
+          src="assets/icons/twitter.svg"
+          alt="twitter"
+        />
+        <img
+          class="w-4 h-4 cursor-pointer"
+          src="assets/icons/facebook.svg"
+          alt="facebook"
+        />
+        <img
+          class="w-4 h-4 cursor-pointer"
+          src="assets/icons/instagram.svg"
+          alt="instagram"
+        />
+        <img
+          (click)="openBookmarkList()"
+          class="w-5 h-5 cursor-pointer"
+          src="assets/icons/active-star.svg"
+          alt=""
+        />
       </div>
-      <ul
-        *ngFor="let route of topNav"
-        [routerLink]="route.route"
-        routerLinkActive
-        #activeLink="routerLinkActive"
+      <div (click)="showMenu = !showMenu"  class="relative z-50">
+        <img
+          class="lg:w-16 lg:h-16 w-10 h-10 cursor-pointer"
+          src="assets/icons/menu.svg"
+          alt="menu"
+        />
+     
+      </div>
+      <div
+        (mouseleave)="showMenu = false"
+        [ngClass]="showMenu ? 'right-0 overflow' : '-right-full'"
+        class="absolute  transition-all shadow-xl duration-700 w-[80%] max-w-xs z-50 bg-white p-8 top-[50px]"
       >
-        <li class="mb-2 cursor-pointer hover:text-orange">{{ route.name }}</li>
-      </ul>
+        <div class="flex justify-end">
+          <span (click)="showMenu = false">
+            <svg
+              width="35px"
+              height="35px"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g
+                id="SVGRepo_tracerCarrier"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></g>
+              <g id="SVGRepo_iconCarrier">
+                <g id="Menu / Close_SM">
+                  <path
+                    id="Vector"
+                    d="M16 16L12 12M12 12L8 8M12 12L16 8M12 12L8 16"
+                    stroke="#000000"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></path>
+                </g>
+              </g>
+            </svg>
+          </span>
+        </div>
+        <ul
+          *ngFor="let route of topNav"
+          [routerLink]="route.route"
+          routerLinkActive
+          #activeLink="routerLinkActive"
+        >
+          <li class="mb-2 cursor-pointer hover:text-orange">{{ route.name }}</li>
+        </ul>
+      </div>
     </div>
   </div>
-</div>
+  </div>
+</section>
 
