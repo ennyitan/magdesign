@@ -19,7 +19,7 @@ export class BookmarkListComponent {
   ) {}
   close() {
     this.dialog.close();
-    window.location.reload();
+    // window.location.reload();
   }
   deleteArticle(index: number) {
     this.data.bookmarkedList.splice(index, 1);

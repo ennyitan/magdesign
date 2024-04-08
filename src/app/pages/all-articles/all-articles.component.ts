@@ -21,7 +21,7 @@ export class AllArticlesComponent {
   }
 
   fetchArticles() {
-    // combining both types of article so there can be a shufffle of different articles on the page
+    // combining both types of article so there can be a shuffle of different articles on the page
     this.articleService.getBuisnessArticle().subscribe((res) => {
       const validateResponse = res.articles.filter(
         (article: any) => article.urlToImage !== null
@@ -67,7 +67,6 @@ export class AllArticlesComponent {
       JSON.stringify(this.bookmarkedArray)
     );
   }
-
   submitForm() {
     console.log('Form submitted:', this.formData);
   }
