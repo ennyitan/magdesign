@@ -10,7 +10,7 @@ import { INewsMenu, NewsMenu } from 'src/app/core/constant/menu.model';
 })
 export class HeaderComponent implements OnInit {
   topNav: INewsMenu[] = NewsMenu;
-  showMenu = false as boolean;
+  isToggleBarActive = false as boolean;
   constructor(private dialog: MatDialog) {}
   ngOnInit(): void {}
   openBookmarkList() {
@@ -27,4 +27,7 @@ export class HeaderComponent implements OnInit {
     });
   }
   close() {}
+  toggleToggleBar() {
+    this.isToggleBarActive = !this.isToggleBarActive;
+  }
 }

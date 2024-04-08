@@ -8,7 +8,6 @@ import { HttpClient } from '@angular/common/http';
 export class ArticleService {
   private apiKey = '58fd4b5b4a2f4fb8ad54ae9f47287316';
   private apiUrl = 'https://newsapi.org/v2/top-headlines';
-
   constructor(private http: HttpClient) {}
   getBuisnessArticle(): Observable<any> {
     return this.http.get<any>(

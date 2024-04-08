@@ -44,11 +44,18 @@ body {
   margin: 0;
   font-family: "Poppins", sans-serif !important;
 }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
   background: #f79918 !important;
 }
 .owl{
   width: 1000px !important;
   margin-right: 150px !important;
+}
+.custom-snackbar {
+  background-color: #2196f3 !important; 
+  color: white; 
+}
+
+.custom-snackbar-button {
+  color: white; 
 }

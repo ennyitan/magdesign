@@ -14,7 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { ErrorInterceptor } from './core/interceptors/error-interceptor';
 import { BookmarkListComponent } from './pages/bookmark-list/bookmark-list.component';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,10 +31,11 @@ import { BookmarkListComponent } from './pages/bookmark-list/bookmark-list.compo
     MatDialogModule,
     MatTooltipModule,
     FormsModule,
-    CarouselModule
+    CarouselModule,
+    MatSnackBarModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })

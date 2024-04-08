@@ -1,8 +1,9 @@
-import { Component, Inject } from '@angular/core';
+import { Component, EventEmitter, Inject, Output } from '@angular/core';
 import {
   MAT_DIALOG_DATA,
   MatDialogRef,
 } from '@angular/material/dialog';
+import { ArticleService } from 'src/app/core/services/article.service';
 
 @Component({
   selector: 'app-bookmark-list',
@@ -19,7 +20,7 @@ export class BookmarkListComponent {
   ) {}
   close() {
     this.dialog.close();
-    // window.location.reload();
+    window.location.reload();
   }
   deleteArticle(index: number) {
     this.data.bookmarkedList.splice(index, 1);

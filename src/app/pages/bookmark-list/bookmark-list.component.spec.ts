@@ -8,8 +8,8 @@ describe('BookmarkListComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [BookmarkListComponent]
-    });
+      imports: [BookmarkListComponent,]
+    }).compileComponents();
     fixture = TestBed.createComponent(BookmarkListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

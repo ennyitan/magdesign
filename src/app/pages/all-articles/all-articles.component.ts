@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { Article } from 'src/app/core/constant/article.model';
 import { ArticleService } from 'src/app/core/services/article.service';
@@ -9,13 +10,14 @@ import { ArticleService } from 'src/app/core/services/article.service';
   styleUrls: ['./all-articles.component.scss'],
 })
 export class AllArticlesComponent {
+  articles: Article[] = [];
   formData: any = {};
   isBookmarkClicked = false as boolean
   bookmarkedArray: any[] = [];
   combinedArticles: Article[] = [];
   businessArticles: Article[] = [];
   techArticles: Article[] = [];
-  constructor(private articleService: ArticleService) {}
+  constructor(private articleService: ArticleService, private snackBar: MatSnackBar) {}
   ngOnInit(): void {
     this.fetchArticles();
   }
@@ -57,11 +59,14 @@ export class AllArticlesComponent {
       article.isBookmarkClicked
     ) {
       this.bookmarkedArray.push(article);
+      this.snackBar.open('Bookmark added!', 'Close', { duration: 2000 }); 
     } else {
       this.bookmarkedArray = this.bookmarkedArray.filter(
         (item) => item !== article
       );
+      this.snackBar.open('Bookmark removed!', 'Close', { duration: 2000, panelClass: ['custom-snackbar-removed'] });
     }
+
     localStorage.setItem(
       'bookmarkedArticle',
       JSON.stringify(this.bookmarkedArray)
